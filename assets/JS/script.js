@@ -2,8 +2,6 @@ var resultEl = document.getElementById('result');
 var generateEl = document.getElementById('generate');
 var clipboard = document.getElementById('clipboard');
 
-generate.addEventListener('click', promptQuestion(), promptSelection());
-
 function promptQuestion() {
     var length = prompt("How many characters will you like your password to have?")
 //if character is not a number, alert a error
@@ -22,7 +20,6 @@ function promptQuestion() {
         promptQuestion();
     }
 }
-promptQuestion();
 
 function promptSelection() {
     // Confirm whether user will like to include lowercase in their paswword
@@ -43,10 +40,16 @@ function promptSelection() {
         promptSelection();
     }
 }
-promptSelection();
-
 
 //Once all prompts are answered, computer will generate a password
+//Set all get characters function in a object
+var getCharFunc = {
+	lower: getLowercase,
+	upper: getUppercase,
+	number: getSymbol,
+	symbol: getSymbol
+}
+
 
 
 
@@ -81,11 +84,4 @@ function getSymbol() {
 
 
 
-
-
-
-
-
-
-
-// As a bonus, the user should also have the option to click a button to copy the password to their clipboard.
+//User should also have the option to click a button to copy the password to their clipboard.
